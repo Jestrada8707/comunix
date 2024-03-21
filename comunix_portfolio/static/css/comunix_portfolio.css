@@ -1,10 +1,94 @@
-/*Navbar style*/
-
 .menu_custom {
     background-color: #e51b46;
 }
 
 .lead-custom {
-	font-size: 2.25rem;
-	font-weight: 300;
+    font-size: 2.25rem;
+    font-weight: 300;
+}
+
+.btn-primary-custom {
+    color: #fff;
+    background-color: #2e77ff;
+    border-color: #2e77ff;
+}
+
+.project {
+    position: relative;
+    padding: 3rem 0;
+}
+
+.project__content {
+    display: block;
+    padding: 0;
+    margin: 0;
+    width: 100%;
+}
+
+.project__content li {
+    display: inline-block;
+    width: 75%;
+}
+
+.project__content p {
+    font-size: 0.8rem;
+}
+
+@media (min-width: 992px) {
+    .project__content p {
+        font-size: 1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .project__content {
+        margin-top: 5rem;
+    }
+}
+
+
+@media (max-width: 960px) and (min-width: 501px) {
+    .project__content li, h3 {
+        width: 90%;
+        margin-left: 1rem;
+    }
+}
+
+@media (max-width: 500px) {
+    .project__content li, h3 {
+        width: 90%;
+        margin-left: 1rem;
+    }
+}
+
+.project__content .icon {
+    font-size: 1.5rem;
+    color: #e31b46;
+}
+
+@media (min-width: 992px) {
+    .project__content .icon {
+        font-size: 2.5rem;
+    }
+}
+
+.project__pic {
+    padding-top: 5rem;
+    max-width: 60%;
+    margin: auto;
+    display: block;
+}
+
+@media (max-width: 960px) and (min-width: 501px) {
+    .project__pic {
+        max-width: 100%;
+        margin: auto;
+    }
+}
+
+@media (max-width: 500px) {
+    .project__pic {
+        width: 100%;
+        margin: auto;
+    }
 }

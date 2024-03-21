@@ -1,0 +1,47 @@
+{% extends 'base.html' %}
+{% load static wagtailcore_tags wagtailimages_tags  %}
+{% block content %}
+<div class="container d-flex align-items-center justify-content-center">
+    <div class="row">
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 project mt-4 text-start">
+            {% for p in self.img_project.all %}
+            {% image p.imagen_proyecto original as img%}
+            <div class="project__pic">
+                <img src="{{img.url}}" alt="web development illustration"
+                     class="img-fluid">
+            </div>
+            {% endfor %}
+        </div>
+        <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 project mt-4">
+            <div class="project__content">
+                <h3 class="fw-bold">Características del Proyecto</h3>
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item">Fecha: {{ self.fecha_publicacion}}</li>
+                    {% if self.autor %}
+                    <li class="list-group-item">Autor: {{self.autor}}</li>
+                    {% endif %}
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="container">
+    <div class="row text-center">
+        <h1 class="display-5 fw-bold">{{self.titulo_proyecto}}</h1>
+        <div class="heading-line mb-1"></div>
+    </div>
+    <!-- START THE DESCRIPTION CONTENT  -->
+    <div class="row pt-2 pb-2 mt-0 mb-3">
+        <div class="col-md-12">
+            <div class="bg-white p-4 text-center">
+                <p class="fw-light">
+                    {{ self.descripcion_proyecto | richtext}}
+                </p>
+            </div>
+        </div>
+    </div>
+</div>
+<br>
+<br>
+
+{% endblock %}

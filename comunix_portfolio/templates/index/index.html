@@ -7,11 +7,11 @@
 /////////////////////////////////////////////////////////////////////////////////////////////////////-->
 <section class="hero" id="hero">
     <div class="heroText">
-        <h1 class="text-white mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
+        <h1 class="text-white display-2--intro mt-5 mb-lg-4" data-aos="zoom-in" data-aos-delay="800">
             Tú lo imaginas
         </h1>
 
-        <p class="text-secondary-white-color" data-aos="fade-up" data-aos-delay="1000">
+        <p class="text-white " data-aos="fade-up" data-aos-delay="1000">
             <strong class="custom-underline">Nosotros</strong> lo hacemos por ti
         </p>
     </div>
@@ -310,134 +310,46 @@
 
 <section id="portfolio" class="portfolio">
     <div class="container">
+         {% if projects %}
         <div class="row text-center mt-5">
-            <h1 class="display-3 fw-bold text-capitalize">Latest work</h1>
+            <h1 class="display-3 fw-bold text-capitalize">Ultimos Proyectos</h1>
             <div class="heading-line"></div>
             <p class="lead">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Sint porro temporibus distinctio.
+                Nuestros proyectos ejemplifican nuestra firme dedicación a superar las expectativas de cada cliente,
+                demostrando nuestra capacidad de brindar soluciones que destacan por su excelencia.
             </p>
         </div>
         <!-- FILTER BUTTONS  -->
         <div class="row mt-5 mb-4 g-3 text-center">
             <div class="col-md-12">
-                <button class="btn btn-outline-primary" type="button">All</button>
-                <button class="btn btn-outline-primary" type="button">websites</button>
-                <button class="btn btn-outline-primary" type="button">design</button>
-                <button class="btn btn-outline-primary" type="button">mockup</button>
+                <button class="btn btn-outline-primary" type="button">Todos</button>
+                <button class="btn btn-outline-primary" type="button">Sitios Web</button>
+                <button class="btn btn-outline-primary" type="button">Diseño Grafico</button>
+                <button class="btn btn-outline-primary" type="button">Audiovisual</button>
             </div>
         </div>
 
         <!-- START THE PORTFOLIO ITEMS  -->
         <div class="row">
+            {% for p in projects %}
             <div class="col-lg-4 col-md-6">
                 <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-1.jpg" alt="portfolio 1 image" title="portfolio 1 picture"
+                    {% for x in p.img_project.all %}
+                    {% image x.imagen_proyecto original as project_img%}
+                    <img src="{{project_img.url}}" alt="portfolio 1 image" title="portfolio 1 picture"
                          class="img-fluid">
+                    {% endfor %}
                     <div class="portfolio-info">
                         <div class="caption">
-                            <h4>project name goes here 1</h4>
+                            <h4>{{ p.titulo_proyecto}}</h4>
                             <p>category project</p>
                         </div>
                     </div>
                 </div>
             </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-2.jpg" alt="portfolio 2 image" title="portfolio 2 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 2</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-3.jpg" alt="portfolio 3 image" title="portfolio 3 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 3</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-4.jpg" alt="portfolio 4 image" title="portfolio 4 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 4</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-5.jpg" alt="portfolio 5 image" title="portfolio 5 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 5</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-6.jpg" alt="portfolio 6 image" title="portfolio 6 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 6</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-7.jpg" alt="portfolio 7 image" title="portfolio 7 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 7</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-8.jpg" alt="portfolio 8 image" title="portfolio 8 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 8</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    <img src="images/portfolio/portfolio-9.jpg" alt="portfolio 9 image" title="portfolio 9 picture"
-                         class="img-fluid">
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>project name goes here 9</h4>
-                            <p>category project</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
+            {% endfor %}
         </div>
+        {% endif %}
     </div>
 </section>
 
@@ -447,10 +359,10 @@
 <section id="contact" class="get-started">
     <div class="container">
         <div class="row text-center">
-            <h1 class="display-3 fw-bold text-capitalize">Get started</h1>
+            <h1 class="display-3 fw-bold text-capitalize">Comienza ahora mismo</h1>
             <div class="heading-line"></div>
             <p class="lh-lg">
-                Lorem ipsum, dolor sit amet consectetur adipisicing elit. Libero illum architecto modi.
+                Permítenos convertir en realidad tu próximo proyecto.
             </p>
         </div>
 
@@ -458,42 +370,42 @@
         <div class="row text-white">
             <div class="col-12 col-lg-6 gradient shadow p-3">
                 <div class="cta-info w-100">
-                    <h4 class="display-4 fw-bold">100% Satisfaction Guaranteed</h4>
+                    <h4 class="display-4 fw-bold">100% Satisfacción Garantizada</h4>
                     <p class="lh-lg">
-                        Lorem ipsum dolor sit amet consectetur adipisicing elit. Aperiam alias optio minima, tempore
-                        architecto sint ipsam dolore tempora facere laboriosam corrupti!
+                        Podemos materializar o perfeccionar tu proyecto o idea de negocio. Nuestra amplia experiencia en
+                        el sector público y privado respalda la calidad que entregamos en cada producto.
                     </p>
-                    <h3 class="display-3--brief">What will be the next step?</h3>
+                    <h3 class="display-3--brief">¿Cuál será el siguiente paso?</h3>
                     <ul class="cta-info__list">
-                        <li>We'll prepare the proposal.</li>
-                        <li>we'll discuss it together.</li>
-                        <li>let's start the discussion.</li>
+                        <li>Prepararemos la propuesta.</li>
+                        <li>La discutiremos juntos.</li>
+                        <li>Comencemos el proyecto.</li>
                     </ul>
                 </div>
             </div>
             <div class="col-12 col-lg-6 bg-white shadow p-3">
                 <div class="form w-100 pb-2">
-                    <h4 class="display-3--title mb-5">start your project</h4>
+                    <h4 class="display-3--title mb-5">Comienza tu proyecto</h4>
                     <form action="#" class="row">
                         <div class="col-lg-6 col-md mb-3">
-                            <input type="text" placeholder="First Name" id="inputFirstName"
+                            <input type="text" placeholder="Nombres" id="inputFirstName"
                                    class="shadow form-control form-control-lg">
                         </div>
                         <div class="col-lg-6 col-md mb-3">
-                            <input type="text" placeholder="Last Name" id="inputLastName"
+                            <input type="text" placeholder="Apellidos" id="inputLastName"
                                    class="shadow form-control form-control-lg">
                         </div>
                         <div class="col-lg-12 mb-3">
-                            <input type="email" placeholder="email address" id="inputEmail"
+                            <input type="email" placeholder="Correo Electrónico" id="inputEmail"
                                    class="shadow form-control form-control-lg">
                         </div>
                         <div class="col-lg-12 mb-3">
-                            <textarea name="message" placeholder="message" id="message" rows="8"
+                            <textarea name="message" placeholder="Mensaje" id="message" rows="8"
                                       class="shadow form-control form-control-lg"></textarea>
                         </div>
                         <div class="text-center d-grid mt-1">
                             <button type="button" class="btn btn-primary rounded-pill pt-3 pb-3">
-                                submit
+                                Enviar
                                 <i class="fas fa-paper-plane"></i>
                             </button>
                         </div>

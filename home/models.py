@@ -3,6 +3,8 @@ from modelcluster.fields import ParentalKey
 from wagtail.models import Page, Orderable
 from wagtail.admin.panels import InlinePanel, MultiFieldPanel, FieldPanel
 
+from projects.models import BlogPost
+
 
 
 class HomePage(Page):
@@ -17,6 +19,7 @@ class HomePage(Page):
 
     def get_context(self, request):
         context = super(HomePage, self).get_context(request)
+        context['projects'] = BlogPost.objects.all().order_by('-id')[:6]
         return context
 
 
