@@ -32,6 +32,13 @@ class BlogPost(Page):
         help_text='Nombre del autor. -Opcional '
     )
 
+    client = models.CharField(
+        max_length=35,
+        blank=False,
+        null=True,
+        help_text='Nombre del cliente.'
+    )
+
     descripcion_proyecto = RichTextField(
         blank=True,
         max_length=5000,
@@ -47,6 +54,7 @@ class BlogPost(Page):
             FieldPanel('titulo_proyecto'),
             FieldPanel('fecha_publicacion'),
             FieldPanel('autor'),
+            FieldPanel('client'),
             FieldPanel('descripcion_proyecto'),
         ], heading='Datos del Proyecto'),
 

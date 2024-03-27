@@ -310,7 +310,7 @@
 
 <section id="portfolio" class="portfolio">
     <div class="container">
-         {% if projects %}
+        {% if projects %}
         <div class="row text-center mt-5">
             <h1 class="display-3 fw-bold text-capitalize">Ultimos Proyectos</h1>
             <div class="heading-line"></div>
@@ -333,19 +333,21 @@
         <div class="row">
             {% for p in projects %}
             <div class="col-lg-4 col-md-6">
-                <div class="portfolio-box shadow">
-                    {% for x in p.img_project.all %}
-                    {% image x.imagen_proyecto original as project_img%}
-                    <img src="{{project_img.url}}" alt="portfolio 1 image" title="portfolio 1 picture"
-                         class="img-fluid">
-                    {% endfor %}
-                    <div class="portfolio-info">
-                        <div class="caption">
-                            <h4>{{ p.titulo_proyecto}}</h4>
-                            <p>category project</p>
+                <a href="{%pageurl p%}">
+                    <div class="portfolio-box shadow">
+                        {% for x in p.img_project.all %}
+                        {% image x.imagen_proyecto original as project_img%}
+                        <img src="{{project_img.url}}" alt="portfolio 1 image" title="portfolio 1 picture"
+                             class="img-fluid">
+                        {% endfor %}
+                        <div class="portfolio-info">
+                            <div class="caption">
+                                <h4>{{ p.titulo_proyecto}}</h4>
+                                <p>category project</p>
+                            </div>
                         </div>
                     </div>
-                </div>
+                </a>
             </div>
             {% endfor %}
         </div>

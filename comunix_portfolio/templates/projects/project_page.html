@@ -15,10 +15,13 @@
         <div class="col-lg-6 col-md-6 col-sm-12 col-xs-12 project mt-4">
             <div class="project__content">
                 <h3 class="fw-bold">Características del Proyecto</h3>
-                <ul class="list-group list-group-flush">
+                <ul class="list-group list-group-flush mt-2">
                     <li class="list-group-item">Fecha: {{ self.fecha_publicacion}}</li>
                     {% if self.autor %}
                     <li class="list-group-item">Autor: {{self.autor}}</li>
+                    {% endif %}
+                    {% if self.client %}
+                    <li class="list-group-item">Cliente: {{self.client}}</li>
                     {% endif %}
                 </ul>
             </div>
