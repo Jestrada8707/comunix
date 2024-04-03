@@ -1,0 +1,26 @@
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags  %}
+
+<div class="row">
+    {% for p in projects%}
+    <div class="col-lg-4 col-md-6">
+        <div class="portfolio-box shadow">
+            <a href="{% pageurl p%}">
+                {% for x in p.img_project.all %}
+                {% image x.imagen_proyecto original as img%}
+                <img src="{{img.url}}" alt="portfolio 1 image" title="portfolio 1 picture"
+                     class="img-fluid">
+                {% endfor %}
+                <div class="portfolio-info">
+                    <div class="caption">
+                        <h4>{{ p.titulo_proyecto}}</h4>
+                        {% for c in p.categoria.all %}
+                        <p>{{ c.nombre_categoria }}</p>
+                        {% endfor %}
+                    </div>
+                </div>
+            </a>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+

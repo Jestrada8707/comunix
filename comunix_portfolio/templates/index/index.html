@@ -1,7 +1,6 @@
 {% extends 'base.html' %}
-{% load static wagtailcore_tags wagtailimages_tags  %}
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
 {% block content %}
-
 <!-- /////////////////////////////////////////////////////////////////////////////////////////////////
                             START SECTION 2 - THE INTRO SECTION
 /////////////////////////////////////////////////////////////////////////////////////////////////////-->
@@ -321,36 +320,20 @@
         </div>
         <!-- FILTER BUTTONS  -->
         <div class="row mt-5 mb-4 g-3 text-center">
-            <div class="col-md-12">
-                <button class="btn btn-outline-primary" type="button">Todos</button>
-                <button class="btn btn-outline-primary" type="button">Sitios Web</button>
-                <button class="btn btn-outline-primary" type="button">Diseño Grafico</button>
-                <button class="btn btn-outline-primary" type="button">Audiovisual</button>
-            </div>
-        </div>
 
-        <!-- START THE PORTFOLIO ITEMS  -->
-        <div class="row">
-            {% for p in projects %}
-            <div class="col-lg-4 col-md-6">
-                <a href="{%pageurl p%}">
-                    <div class="portfolio-box shadow">
-                        {% for x in p.img_project.all %}
-                        {% image x.imagen_proyecto original as project_img%}
-                        <img src="{{project_img.url}}" alt="portfolio 1 image" title="portfolio 1 picture"
-                             class="img-fluid">
-                        {% endfor %}
-                        <div class="portfolio-info">
-                            <div class="caption">
-                                <h4>{{ p.titulo_proyecto}}</h4>
-                                <p>category project</p>
-                            </div>
-                        </div>
-                    </div>
+            <div class="col-md-12">
+                {% for cat in categorias %}
+                <a href="{% routablepageurl page 'category_view' cat.slug %}">
+                    <button class="btn btn-outline-primary" type="button">{{cat.nombre_categoria}}</button>
                 </a>
+                {% endfor %}
             </div>
-            {% endfor %}
+
         </div>
+        <!-- START THE PORTFOLIO ITEMS  -->
+
+        {% include 'projects/_portfolio_items.html'%}
+
         {% endif %}
     </div>
 </section>

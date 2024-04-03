@@ -23,6 +23,11 @@
                     {% if self.client %}
                     <li class="list-group-item">Cliente: {{self.client}}</li>
                     {% endif %}
+                    {% if self.categoria %}
+                    {% for c in self.categoria.all %}
+                    <li class="list-group-item">Categoria: {{c.nombre_categoria}}</li>
+                    {% endfor %}
+                    {% endif %}
                 </ul>
             </div>
         </div>

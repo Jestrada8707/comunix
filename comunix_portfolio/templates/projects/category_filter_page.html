@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% load static wagtailcore_tags wagtailimages_tags wagtailroutablepage_tags %}
+
+{% block content %}
+{% for p in projects|slice:"1" %}
+<div class="container">
+    <div class="row text-center mt-5">
+        {% for cat in p.categoria.all|slice:"1" %}
+        <h4 class=" fw-bold lead-custom mt-5">Filtrado por: {{ cat.nombre_categoria }}</h4>
+        {% endfor %}
+        <div class="heading-line"></div>
+    </div>
+    {% endfor %}
+    <div class="mt-5 mb-5">
+        {% include 'projects/_portfolio_items.html'%}
+    </div>
+</div>
+
+
+{% endblock %}

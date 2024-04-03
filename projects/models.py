@@ -1,16 +1,21 @@
+from django import forms
 from django.db import models
+from django_extensions.db.fields import AutoSlugField
+from modelcluster.fields import ParentalManyToManyField
 
 from wagtail.models import Page, Orderable
 from modelcluster.fields import ParentalKey
 from wagtail.admin.panels import FieldPanel, MultiFieldPanel, InlinePanel
 from wagtail.fields import RichTextField
+from wagtail.snippets.models import register_snippet
+from wagtail.contrib.routable_page.models import RoutablePageMixin
 
 
-class BlogPost(Page):
+class BlogPost(RoutablePageMixin, Page):
     """Modelo para la pagina de los proyectos"""
 
     template = "projects/project_page.html"
-    max_count = 15
+    max_count = 18
 
     titulo_proyecto = models.CharField(
         max_length=30,
@@ -31,6 +36,8 @@ class BlogPost(Page):
         null=True,
         help_text='Nombre del autor. -Opcional '
     )
+
+    categoria = ParentalManyToManyField("projects.Categorias", blank=False)
 
     client = models.CharField(
         max_length=35,
@@ -54,6 +61,7 @@ class BlogPost(Page):
             FieldPanel('titulo_proyecto'),
             FieldPanel('fecha_publicacion'),
             FieldPanel('autor'),
+            FieldPanel('categoria', widget=forms.CheckboxSelectMultiple),
             FieldPanel('client'),
             FieldPanel('descripcion_proyecto'),
         ], heading='Datos del Proyecto'),
@@ -76,3 +84,23 @@ class ImagenFondoBlog(Orderable):
     panels = [
         FieldPanel("imagen_proyecto"),
     ]
+
+
+class Categorias(models.Model):
+    nombre_categoria = models.CharField(max_length=255)
+    slug = AutoSlugField(populate_from='nombre_categoria', editable=True)
+
+    panels = [
+        FieldPanel('nombre_categoria'),
+        FieldPanel('slug'),
+    ]
+
+    def __str__(self):
+        return self.nombre_categoria
+
+    class Meta:
+        verbose_name_plural = 'Categorias Proyectos'
+        ordering = ["nombre_categoria"]
+
+
+register_snippet(Categorias)
