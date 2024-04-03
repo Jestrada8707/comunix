@@ -1,0 +1,12 @@
+{% extends "wagtailadmin/login.html" %}
+{% load static %}
+
+{% block branding_login %}Ingresar al Administrador{% endblock %}
+{% block above_login %} Acceso solo para los administradores de la página. {% endblock %}
+
+{% block branding_logo %}
+<div class="login-logo">
+    <img src="{% static 'images/logo_vertical.svg' %}"/>
+</div>
+{% endblock %}
+
